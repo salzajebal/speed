@@ -14,14 +14,14 @@ const s: Record<string, React.CSSProperties> = {
   },
   head: {
     background: "#ff6b2c",
-    padding: "16px 22px",
+    padding: "14px 20px",
     color: "#fff",
   },
-  headH2: { fontSize: 20, fontWeight: 700, display: "flex", alignItems: "center", gap: 8, marginBottom: 2 },
-  headP: { fontSize: 14, fontWeight: 500, color: "rgba(255,255,255,.7)" },
-  form: { padding: "20px 22px 16px", display: "flex", flexDirection: "column", gap: 12 },
+  headH2: { fontSize: 18, fontWeight: 700, display: "flex", alignItems: "center", gap: 8, marginBottom: 2 },
+  headP: { fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,.7)" },
+  form: { padding: "18px 20px 14px", display: "flex", flexDirection: "column", gap: 12 },
   fg: { display: "flex", flexDirection: "column", gap: 5 },
-  label: { fontSize: 15, fontWeight: 600, color: "#555" },
+  label: { fontSize: 14, fontWeight: 600, color: "#555" },
   req: { color: "#ff6b2c" },
   input: {
     border: "1px solid #ddd",
@@ -29,38 +29,41 @@ const s: Record<string, React.CSSProperties> = {
     fontFamily: "inherit",
     fontSize: 16,
     fontWeight: 500,
-    padding: "12px 14px",
+    padding: "13px 14px",
     color: "#222",
     background: "#fafafa",
     outline: "none",
     transition: "border-color .15s",
-  },
-  phoneGroup: { display: "flex", alignItems: "center", gap: 6 },
+    width: "100%",
+    boxSizing: "border-box",
+  } as React.CSSProperties,
+  phoneGroup: { display: "flex", alignItems: "center", gap: 4 },
   phoneInput: {
     flex: 1,
     minWidth: 0,
     border: "1px solid #ddd",
     borderRadius: 6,
     fontFamily: "inherit",
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 500,
-    padding: "12px 4px",
+    padding: "13px 4px",
     textAlign: "center",
     color: "#222",
     background: "#fafafa",
     outline: "none",
+    width: "100%",
   } as React.CSSProperties,
-  phoneSep: { fontSize: 16, color: "#999" },
+  phoneSep: { fontSize: 16, color: "#bbb", flexShrink: 0 },
   btn: {
     width: "100%",
     background: "#ff6b2c",
     color: "#fff",
     fontFamily: "inherit",
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 700,
     border: "none",
     cursor: "pointer",
-    padding: "17px",
+    padding: "16px",
     borderRadius: 8,
     marginTop: 4,
     display: "flex",
@@ -75,9 +78,9 @@ const s: Record<string, React.CSSProperties> = {
     border: "1px solid #ddd",
     color: "#555",
     fontFamily: "inherit",
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 600,
-    padding: "15px 20px",
+    padding: "14px 16px",
     borderRadius: 8,
     cursor: "pointer",
     display: "flex",
@@ -85,23 +88,26 @@ const s: Record<string, React.CSSProperties> = {
     gap: 6,
     whiteSpace: "nowrap",
     transition: "border-color .15s",
+    flexShrink: 0,
   } as React.CSSProperties,
   chipGroup: { display: "flex", flexWrap: "wrap", gap: 6 } as React.CSSProperties,
-  agree: { display: "flex", gap: 8, cursor: "pointer", fontSize: 14, fontWeight: 500, color: "#999", alignItems: "flex-start" },
-  agreeCheck: { marginTop: 3, accentColor: "#ff6b2c", width: 16, height: 16 },
+  agree: { display: "flex", gap: 8, cursor: "pointer", fontSize: 13, fontWeight: 500, color: "#999", alignItems: "flex-start" },
+  agreeCheck: { marginTop: 3, accentColor: "#ff6b2c", width: 16, height: 16, flexShrink: 0 },
   tlink: { color: "#ff6b2c", textDecoration: "underline", fontWeight: 600 },
-  err: { fontSize: 13, color: "#d63031", fontWeight: 500 },
+  err: { fontSize: 12, color: "#d63031", fontWeight: 500 },
   select: {
     border: "1px solid #ddd",
     borderRadius: 6,
     fontFamily: "inherit",
     fontSize: 16,
     fontWeight: 500,
-    padding: "12px 14px",
+    padding: "13px 14px",
     color: "#222",
     background: "#fafafa",
     outline: "none",
-  },
+    width: "100%",
+    boxSizing: "border-box",
+  } as React.CSSProperties,
   formBtns: { display: "flex", gap: 8 },
 };
 
@@ -110,8 +116,8 @@ function chip(selected: boolean): React.CSSProperties {
     cursor: "pointer",
     border: `1px solid ${selected ? "#ff6b2c" : "#ddd"}`,
     borderRadius: 6,
-    padding: "9px 16px",
-    fontSize: 15,
+    padding: "8px 12px",
+    fontSize: 14,
     fontWeight: 600,
     color: selected ? "#fff" : "#555",
     background: selected ? "#ff6b2c" : "#fafafa",
@@ -195,16 +201,16 @@ export default function ConsultationForm() {
   if (done) {
     return (
       <div style={s.card}>
-        <div style={{ padding: "48px 32px", textAlign: "center" }}>
-          <div style={{ fontSize: 48, marginBottom: 14, color: "#00b894" }}>✓</div>
-          <h3 style={{ fontSize: 24, fontWeight: 700, color: "#222", marginBottom: 8 }}>신청이 완료되었습니다!</h3>
-          <p style={{ fontSize: 17, fontWeight: 500, color: "#555", lineHeight: 1.7 }}>
+        <div style={{ padding: "40px 24px", textAlign: "center" }}>
+          <div style={{ fontSize: 44, marginBottom: 12, color: "#00b894" }}>✓</div>
+          <h3 style={{ fontSize: 22, fontWeight: 700, color: "#222", marginBottom: 8 }}>신청이 완료되었습니다!</h3>
+          <p style={{ fontSize: 16, fontWeight: 500, color: "#555", lineHeight: 1.7 }}>
             평균 <strong style={{ color: "#ff6b2c" }}>3분 이내</strong>로 연락드리겠습니다.<br />
             잠시만 기다려주세요.
           </p>
           <button
             onClick={() => { setDone(false); setStep(1); setStep1({ name: "", phone1: "010", phone2: "", phone3: "" }); setStep2({ ageRange: "", incomeType: "", amount: "", agree: false }); }}
-            style={{ ...s.btn, marginTop: 24, width: "auto", padding: "12px 32px", fontSize: 16 }}
+            style={{ ...s.btn, marginTop: 20, width: "auto", padding: "12px 28px", fontSize: 15 }}
           >
             다시 신청하기
           </button>
@@ -376,15 +382,15 @@ export default function ConsultationForm() {
 
       {showPrivacy && (
         <div
-          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.5)", backdropFilter: "blur(3px)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000 }}
+          style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.6)", backdropFilter: "blur(3px)", display: "flex", alignItems: "flex-end", justifyContent: "center", zIndex: 1000 }}
           onClick={() => setShowPrivacy(false)}
         >
-          <div style={{ background: "#fff", borderRadius: 12, maxWidth: 500, width: "90%", boxShadow: "0 16px 40px rgba(0,0,0,.15)" }} onClick={e => e.stopPropagation()}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "22px 24px", borderBottom: "1px solid #eee" }}>
-              <h3 style={{ fontSize: 18, fontWeight: 700, display: "flex", alignItems: "center", gap: 8 }}>📄 개인정보 수집·이용 동의서</h3>
-              <button onClick={() => setShowPrivacy(false)} style={{ background: "none", border: "none", fontSize: 20, color: "#999", cursor: "pointer" }}>✕</button>
+          <div style={{ background: "#fff", borderRadius: "16px 16px 0 0", maxWidth: 560, width: "100%", boxShadow: "0 -8px 40px rgba(0,0,0,.2)", maxHeight: "80vh", overflowY: "auto" }} onClick={e => e.stopPropagation()}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 22px", borderBottom: "1px solid #eee", position: "sticky", top: 0, background: "#fff" }}>
+              <h3 style={{ fontSize: 17, fontWeight: 700, display: "flex", alignItems: "center", gap: 8 }}>📄 개인정보 수집·이용 동의서</h3>
+              <button onClick={() => setShowPrivacy(false)} style={{ background: "none", border: "none", fontSize: 22, color: "#999", cursor: "pointer", padding: "0 4px" }}>✕</button>
             </div>
-            <div style={{ padding: 24, fontSize: 15, fontWeight: 500, color: "#555", lineHeight: 2.2, display: "flex", flexDirection: "column", gap: 4 }}>
+            <div style={{ padding: "20px 22px", fontSize: 15, fontWeight: 500, color: "#555", lineHeight: 2, display: "flex", flexDirection: "column", gap: 4 }}>
               <p><strong>수집 항목:</strong> 성명, 휴대폰번호, 직업·소득·신용 관련 정보</p>
               <p><strong>수집 목적:</strong> 대출 상담 서비스 제공 및 상담 연락</p>
               <p><strong>보유 기간:</strong> 상담 완료 후 즉시 파기 (관련 법령 최대 1년)</p>

@@ -18,16 +18,15 @@ const reviews = [
 
 export default function Reviews() {
   return (
-    <section style={{ padding: "88px 0" }}>
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px" }}>
+    <section className="reviews-section">
+      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 20px" }}>
         <h2 style={{
-          fontSize: "clamp(26px, 4vw, 40px)",
+          fontSize: "clamp(22px, 4vw, 38px)",
           fontWeight: 700,
           textAlign: "center",
           color: "#222",
-          marginBottom: 48,
           letterSpacing: "-0.3px",
-        }}>
+        }} className="reviews-title">
           실제 <em style={{ fontStyle: "normal", color: "#ff6b2c" }}>이용 후기</em>
         </h2>
 
@@ -38,28 +37,36 @@ export default function Reviews() {
         }} className="reviews-grid">
           {reviews.map((r, i) => (
             <blockquote key={i} style={{
-              padding: "32px 28px",
+              padding: "28px 24px",
               fontStyle: "normal",
               borderBottom: "1px solid #eee",
               borderRight: i < reviews.length - 1 ? "1px solid #eee" : "none",
               margin: 0,
             }}>
-              <div style={{ color: "#ff6b2c", fontSize: 15, letterSpacing: 0, marginBottom: 12 }}>
+              <div style={{ color: "#ff6b2c", fontSize: 14, marginBottom: 10 }}>
                 {"★".repeat(r.stars)}{"☆".repeat(5 - r.stars)}
               </div>
-              <p style={{ fontSize: 17, fontWeight: 500, color: "#555", lineHeight: 1.75, marginBottom: 14 }}>
+              <p style={{ fontSize: 16, fontWeight: 500, color: "#555", lineHeight: 1.75, marginBottom: 12 }}>
                 {r.text}
               </p>
-              <footer style={{ fontSize: 14, fontWeight: 500, color: "#999" }}>{r.author}</footer>
+              <footer style={{ fontSize: 13, fontWeight: 500, color: "#999" }}>{r.author}</footer>
             </blockquote>
           ))}
         </div>
       </div>
 
       <style>{`
+        .reviews-section { padding: 72px 0; }
+        .reviews-title { margin-bottom: 44px; }
+
         @media (max-width: 960px) {
           .reviews-grid { grid-template-columns: 1fr !important; }
           .reviews-grid blockquote { border-right: none !important; }
+        }
+        @media (max-width: 640px) {
+          .reviews-section { padding: 48px 0; }
+          .reviews-title { margin-bottom: 28px; }
+          .reviews-grid blockquote { padding: 22px 18px !important; }
         }
       `}</style>
     </section>
