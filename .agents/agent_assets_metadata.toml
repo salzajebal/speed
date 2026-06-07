@@ -1,0 +1,14 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "EtAYOZoSdyKGe4WJjn6us"
+uri = "file://artifacts/mockup-sandbox/public/images/dark-luxury-hero.png"
+type = "image"
+title = "Dark luxury gold glowing background"
+
+[[generated]]
+id = "VzUX4RBzNgvak1_JAjiUz"
+uri = "file://artifacts/mockup-sandbox/public/images/warm-hero.png"
+type = "image"
+title = "Warm financial abstract illustration"

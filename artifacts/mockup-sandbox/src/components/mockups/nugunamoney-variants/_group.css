@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --dl-bg: 0 0% 4%;
+    --dl-card: 0 0% 7%;
+    --dl-gold: 43 96% 58%;
+    --dl-gold-dark: 43 100% 30%;
+    --dl-text: 0 0% 98%;
+    --dl-text-muted: 0 0% 65%;
+    --dl-border: 0 0% 15%;
+  }
+}
+
+.dl-gradient-text {
+  background: linear-gradient(135deg, #FFDF73 0%, #B8860B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dl-glass {
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dl-input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.dl-input:focus {
+  outline: none;
+  border-color: #FFDF73;
+  box-shadow: 0 0 0 1px rgba(255, 223, 115, 0.2);
+}
+
+.dl-btn {
+  background: linear-gradient(135deg, #FFDF73 0%, #D4AF37 100%);
+  color: #000;
+  font-weight: 700;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dl-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -10px rgba(212, 175, 55, 0.5);
+}

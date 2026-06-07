@@ -1,0 +1,1 @@
+- [누구나머니 project setup](nugunamoney-setup.md) — loan consultation landing page; admin at /admin (pw: admin123); Telegram settings in DB settings table

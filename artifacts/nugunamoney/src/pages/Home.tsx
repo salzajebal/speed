@@ -2,18 +2,20 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import TargetCustomers from "@/components/TargetCustomers";
 import Process from "@/components/Process";
-import TrustFeatures from "@/components/TrustFeatures";
+import Reviews from "@/components/Reviews";
+import BottomCTA from "@/components/BottomCTA";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-[100dvh] flex flex-col bg-background font-sans overflow-x-hidden">
+    <div style={{ fontFamily: "'SUIT Variable','SUIT',-apple-system,BlinkMacSystemFont,sans-serif", wordBreak: "keep-all" }}>
       <Header />
-      <main className="flex-1">
+      <main>
         <Hero />
         <TargetCustomers />
         <Process />
-        <TrustFeatures />
+        <Reviews />
+        <BottomCTA />
       </main>
       <Footer />
     </div>

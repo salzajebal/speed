@@ -1,40 +1,47 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
-      }`}
-    >
-      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between max-w-6xl">
-        <button 
-          onClick={scrollToTop}
-          className="text-2xl font-extrabold text-primary tracking-tight transition-transform hover:scale-105"
-          data-testid="button-logo-home"
-        >
-          누구나머니
-        </button>
-        <Button 
-          onClick={scrollToTop}
-          className="rounded-full px-6 font-semibold shadow-md hover:shadow-lg transition-all"
-          data-testid="button-nav-consultation"
-        >
-          무료 상담 신청
-        </Button>
+    <header style={{
+      background: "#fff",
+      borderBottom: "1px solid #eee",
+      padding: "14px 0",
+      position: "sticky",
+      top: 0,
+      zIndex: 100,
+    }}>
+      <div style={{
+        maxWidth: 1080,
+        margin: "0 auto",
+        padding: "0 24px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}>
+        <div style={{ fontSize: 26, fontWeight: 700, color: "#111", letterSpacing: "-0.8px" }}>
+          누구나<span style={{ color: "#ff6b2c" }}>머니</span>
+        </div>
+        <nav style={{ display: "flex", alignItems: "center", gap: 18 }}>
+          <span style={{ fontSize: 13, fontWeight: 500, color: "#999", display: "flex", alignItems: "center", gap: 5 }}>
+            <span style={{ color: "#ff6b2c", fontSize: 11 }}>●</span>
+            정식 등록 대부업체
+          </span>
+          <a
+            href="#apply"
+            style={{
+              background: "#ff6b2c",
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: 15,
+              padding: "11px 24px",
+              borderRadius: 6,
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+            }}
+          >
+            무료 상담 신청
+          </a>
+        </nav>
       </div>
     </header>
   );

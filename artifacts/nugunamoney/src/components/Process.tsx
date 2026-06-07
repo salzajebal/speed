@@ -1,55 +1,66 @@
-import { motion } from "framer-motion";
-import { fadeIn, staggerContainer } from "@/lib/animations";
+const steps = [
+  { icon: "📱", num: "STEP 1", title: "1분 간편 신청" },
+  { icon: "🎧", num: "STEP 2", title: "전담 상담원 연결" },
+  { icon: "🔍", num: "STEP 3", title: "맞춤 상품 비교" },
+  { icon: "🏦", num: "STEP 4", title: "당일 계좌 입금" },
+];
 
 export default function Process() {
-  const steps = [
-    { num: "01", title: "상담신청", desc: "간편하게 1분 만에 신청" },
-    { num: "02", title: "서류검토", desc: "전문 상담사의 빠른 확인" },
-    { num: "03", title: "상품매칭", desc: "최적의 맞춤 상품 안내" },
-    { num: "04", title: "당일입금", desc: "승인 즉시 신속한 송금" },
-  ];
-
   return (
-    <section className="py-24 bg-primary/5">
-      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={fadeIn}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">신청부터 입금까지 단 2시간</h2>
-          <p className="text-lg text-muted-foreground">복잡한 절차 없이 빠르고 정확하게 진행됩니다.</p>
-        </motion.div>
+    <section style={{ background: "#f6f6f6", padding: "88px 0" }}>
+      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 24px" }}>
+        <h2 style={{
+          fontSize: "clamp(26px, 4vw, 40px)",
+          fontWeight: 700,
+          textAlign: "center",
+          color: "#222",
+          marginBottom: 48,
+          letterSpacing: "-0.3px",
+          lineHeight: 1.4,
+        }}>
+          신청부터 입금까지, <em style={{ fontStyle: "normal", color: "#ff6b2c" }}>딱 4단계</em>
+        </h2>
 
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={staggerContainer}
-          className="relative max-w-5xl mx-auto"
-        >
-          {/* Connector Line */}
-          <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-border/80"></div>
-          
-          <div className="grid md:grid-cols-4 gap-10 md:gap-4 relative z-10">
-            {steps.map((step, i) => (
-              <motion.div key={i} variants={fadeIn} className="flex flex-col items-center text-center">
-                <div className="w-24 h-24 rounded-full bg-white shadow-md border-4 border-primary/20 flex items-center justify-center mb-6 relative">
-                  <span className="text-2xl font-black text-primary">{step.num}</span>
-                  {/* Mobile connector */}
-                  {i !== steps.length - 1 && (
-                    <div className="md:hidden absolute -bottom-10 left-1/2 w-0.5 h-10 bg-border/80 -translate-x-1/2"></div>
-                  )}
+        <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "center" }} className="steps-row">
+          {steps.flatMap((step, i) => {
+            const items = [
+              <div key={step.num} style={{ textAlign: "center", padding: "0 28px", flex: 1, maxWidth: 220 }}>
+                <div style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: "50%",
+                  background: "#111",
+                  color: "#fff",
+                  fontSize: 22,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 14px",
+                }}>
+                  {step.icon}
                 </div>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-muted-foreground">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#ff6b2c", letterSpacing: 1, marginBottom: 6, display: "block" }}>
+                  {step.num}
+                </span>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: "#222" }}>{step.title}</h3>
+              </div>,
+            ];
+            if (i < steps.length - 1) {
+              items.push(
+                <div key={`arrow-${i}`} style={{ color: "#ccc", fontSize: 16, marginTop: 22 }} className="step-arrow">→</div>
+              );
+            }
+            return items;
+          })}
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .steps-row { flex-direction: column; gap: 0; align-items: center !important; }
+          .step-arrow { transform: rotate(90deg); margin: 0; }
+        }
+      `}</style>
     </section>
   );
 }
