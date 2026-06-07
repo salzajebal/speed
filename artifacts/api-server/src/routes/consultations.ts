@@ -2,7 +2,17 @@ import { Router } from "express";
 import { db } from "@workspace/db";
 import { consultations, insertConsultationSchema } from "@workspace/db";
 import { sendTelegramAlert } from "../lib/telegram";
-import { desc } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env["SESSION_SECRET"] ?? "nugunamoney-secret-2025";
+
+function requireAuth(req: any, res: any, next: any) {
+  const auth = req.headers["authorization"] as string | undefined;
+  if (!auth?.startsWith("Bearer ")) { res.status(401).json({ error: "인증이 필요합니다." }); return; }
+  try { jwt.verify(auth.slice(7), JWT_SECRET); next(); }
+  catch { res.status(401).json({ error: "유효하지 않은 토큰입니다." }); }
+}
 
 const router = Router();
 
@@ -29,6 +39,25 @@ router.get("/", async (req, res) => {
     res.json(rows);
   } catch (err) {
     req.log.error({ err }, "Failed to fetch consultations");
+    res.status(500).json({ error: "서버 오류가 발생했습니다." });
+  }
+});
+
+router.delete("/:id", requireAuth, async (req, res) => {
+  const id = parseInt(req.params["id"] ?? "", 10);
+  if (isNaN(id)) {
+    res.status(400).json({ error: "유효하지 않은 ID입니다." });
+    return;
+  }
+  try {
+    const [deleted] = await db.delete(consultations).where(eq(consultations.id, id)).returning();
+    if (!deleted) {
+      res.status(404).json({ error: "항목을 찾을 수 없습니다." });
+      return;
+    }
+    res.json({ ok: true });
+  } catch (err) {
+    req.log.error({ err }, "Failed to delete consultation");
     res.status(500).json({ error: "서버 오류가 발생했습니다." });
   }
 });
