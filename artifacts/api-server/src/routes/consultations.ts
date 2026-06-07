@@ -25,7 +25,9 @@ router.post("/", async (req, res) => {
 
   try {
     const [row] = await db.insert(consultations).values(parsed.data).returning();
-    await sendTelegramAlert(row).catch(() => {});
+    await sendTelegramAlert(row).catch((err) => {
+      req.log.error({ err }, "Telegram alert failed");
+    });
     res.status(201).json({ ok: true, id: row.id });
   } catch (err) {
     req.log.error({ err }, "Failed to insert consultation");
