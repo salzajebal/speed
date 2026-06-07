@@ -131,7 +131,11 @@ export default function Admin() {
     });
     const data = await res.json();
     if (res.ok) {
-      if (data.chats.length === 0) setDetectError("채팅방을 찾을 수 없습니다. 봇에게 메시지를 먼저 보내주세요.");
+      if (data.chats.length === 0) {
+        setDetectError("채팅방을 찾을 수 없습니다. 봇에게 메시지를 먼저 보내주세요.");
+      } else if (data.chats.length === 1) {
+        setChatId(String(data.chats[0].id));
+      }
       setChats(data.chats);
     } else {
       setDetectError(data.error ?? "오류가 발생했습니다.");
@@ -141,6 +145,10 @@ export default function Admin() {
 
   async function saveSettings(e: React.FormEvent) {
     e.preventDefault();
+    if (botToken && !chatId) {
+      setSettingsMsg("채팅방을 선택하거나 채팅방 ID를 입력해주세요.");
+      return;
+    }
     setSaving(true);
     setSettingsMsg("");
     const res = await fetch(`${BASE}/admin/settings`, {
