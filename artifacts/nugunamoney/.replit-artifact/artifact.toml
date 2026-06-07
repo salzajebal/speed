@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "누구나머니"
+version = "1.0.0"
+id = "artifacts/nugunamoney"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23654
+
+[services.development]
+run = "pnpm --filter @workspace/nugunamoney run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nugunamoney", "run", "build" ]
+publicDir = "artifacts/nugunamoney/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23654"
+BASE_PATH = "/"
