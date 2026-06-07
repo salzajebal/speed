@@ -6,14 +6,15 @@ export default function Footer() {
           <div>
             <h2 className="text-2xl font-extrabold text-white mb-6 tracking-tight">누구나머니</h2>
             <div className="space-y-2 text-sm text-slate-400">
-              <p><span className="font-medium text-slate-300">상호명:</span> 누구나머니 대부중개</p>
-              <p><span className="font-medium text-slate-300">사업자등록번호:</span> 123-45-67890</p>
-              <p><span className="font-medium text-slate-300">대표자:</span> 홍길동</p>
-              <p><span className="font-medium text-slate-300">주소:</span> 서울특별시 강남구 테헤란로 123, 4층 (역삼동)</p>
-              <p className="pt-2"><span className="font-medium text-slate-300">고객센터:</span> 1588-0000</p>
+              <p><span className="font-medium text-slate-300">회사명:</span> 우주캐피탈대부</p>
+              <p><span className="font-medium text-slate-300">사업자등록번호:</span> 738-95-01643</p>
+              <p><span className="font-medium text-slate-300">대표자:</span> 강윤희, 정충헌</p>
+              <p><span className="font-medium text-slate-300">주소:</span> 충청북도 청주시 청원구 내덕동 788-115</p>
+              <p><span className="font-medium text-slate-300">대부업등록번호:</span> 2023-충북청주-0011 (대부중개업)</p>
+              <p className="pt-2"><span className="font-medium text-slate-300">고객센터:</span> 010-5807-7888</p>
             </div>
           </div>
-          
+
           <div className="lg:text-right flex flex-col lg:items-end justify-between">
             <div className="space-x-4 mb-8 lg:mb-0">
               <a href="#" className="text-sm font-medium hover:text-white transition-colors" data-testid="link-privacy-policy">개인정보처리방침</a>
