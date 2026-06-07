@@ -33,6 +33,15 @@ router.post("/login", (req, res) => {
   res.json({ token });
 });
 
+router.get("/public/kakao-link", async (req, res) => {
+  try {
+    const [row] = await db.select().from(settings).where(eq(settings.key, "kakao_link"));
+    res.json({ url: row?.value ?? "" });
+  } catch (err) {
+    res.json({ url: "" });
+  }
+});
+
 router.get("/settings", authMiddleware, async (req, res) => {
   try {
     const rows = await db.select().from(settings);
@@ -41,6 +50,7 @@ router.get("/settings", authMiddleware, async (req, res) => {
     res.json({
       telegram_bot_token: map["telegram_bot_token"] ?? "",
       telegram_chat_id: map["telegram_chat_id"] ?? "",
+      kakao_link: map["kakao_link"] ?? "",
     });
   } catch (err) {
     req.log.error({ err }, "Failed to fetch settings");
@@ -49,9 +59,10 @@ router.get("/settings", authMiddleware, async (req, res) => {
 });
 
 router.put("/settings", authMiddleware, async (req, res) => {
-  const { telegram_bot_token, telegram_chat_id } = req.body as {
+  const { telegram_bot_token, telegram_chat_id, kakao_link } = req.body as {
     telegram_bot_token?: string;
     telegram_chat_id?: string;
+    kakao_link?: string;
   };
   try {
     const upsert = async (key: string, value: string) => {
@@ -62,6 +73,7 @@ router.put("/settings", authMiddleware, async (req, res) => {
     };
     if (telegram_bot_token !== undefined) await upsert("telegram_bot_token", telegram_bot_token);
     if (telegram_chat_id !== undefined) await upsert("telegram_chat_id", telegram_chat_id);
+    if (kakao_link !== undefined) await upsert("kakao_link", kakao_link);
     res.json({ ok: true });
   } catch (err) {
     req.log.error({ err }, "Failed to update settings");

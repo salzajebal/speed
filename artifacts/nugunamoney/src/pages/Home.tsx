@@ -5,6 +5,7 @@ import Process from "@/components/Process";
 import Reviews from "@/components/Reviews";
 import BottomCTA from "@/components/BottomCTA";
 import Footer from "@/components/Footer";
+import KakaoButton from "@/components/KakaoButton";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <BottomCTA />
       </main>
       <Footer />
+      <KakaoButton />
     </div>
   );
 }

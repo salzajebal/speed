@@ -33,6 +33,7 @@ export default function Admin() {
 
   const [botToken, setBotToken] = useState("");
   const [chatId, setChatId] = useState("");
+  const [kakaoLink, setKakaoLink] = useState("");
   const [chats, setChats] = useState<TelegramChat[]>([]);
   const [detecting, setDetecting] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -88,6 +89,7 @@ export default function Admin() {
       const data = await res.json();
       setBotToken(data.telegram_bot_token ?? "");
       setChatId(data.telegram_chat_id ?? "");
+      setKakaoLink(data.kakao_link ?? "");
     }
   }
 
@@ -144,7 +146,7 @@ export default function Admin() {
     const res = await fetch(`${BASE}/admin/settings`, {
       method: "PUT",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ telegram_bot_token: botToken, telegram_chat_id: chatId }),
+      body: JSON.stringify({ telegram_bot_token: botToken, telegram_chat_id: chatId, kakao_link: kakaoLink }),
     });
     setSaving(false);
     if (res.ok) { setSettingsMsg("저장되었습니다."); setTimeout(() => setSettingsMsg(""), 3000); }
@@ -380,6 +382,29 @@ export default function Admin() {
             </div>
 
             <form onSubmit={saveSettings} className="bg-[#1a1a1a] border border-white/5 rounded-xl p-6 space-y-5">
+              {/* KakaoTalk */}
+              <div className="pb-5 border-b border-white/5">
+                <div className="flex items-center gap-2 mb-3">
+                  <span style={{ background: "#FEE500", borderRadius: 6, width: 22, height: 22, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 13 }}>💬</span>
+                  <label className="text-white font-semibold text-sm">오픈 카카오톡 링크</label>
+                </div>
+                <input
+                  type="url"
+                  value={kakaoLink}
+                  onChange={(e) => setKakaoLink(e.target.value)}
+                  placeholder="https://open.kakao.com/o/..."
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder-white/20 outline-none focus:border-[#FEE500] transition-colors text-sm"
+                />
+                <p className="text-white/30 text-xs mt-1.5">입력하면 사이트 우하단에 카카오톡 상담 버튼이 나타납니다.</p>
+              </div>
+
+              {/* Telegram */}
+              <div>
+                <div className="flex items-center gap-2 mb-3">
+                  <span style={{ background: "#229ED9", borderRadius: 6, width: 22, height: 22, display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 13 }}>✈</span>
+                  <label className="text-white font-semibold text-sm">텔레그램 알림</label>
+                </div>
+              </div>
               <div>
                 <label className="block text-white/60 text-sm font-semibold mb-2">봇 토큰</label>
                 <div className="flex gap-2">
