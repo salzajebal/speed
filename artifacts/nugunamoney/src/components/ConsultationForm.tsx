@@ -190,7 +190,8 @@ export default function ConsultationForm() {
       if (res.ok) {
         setDone(true);
       } else {
-        setErrors({ submit: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요." });
+        const data = await res.json().catch(() => ({}));
+        setErrors({ submit: data.error ?? "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요." });
       }
     } catch {
       setErrors({ submit: "네트워크 오류가 발생했습니다." });

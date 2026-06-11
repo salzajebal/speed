@@ -2,7 +2,7 @@ import { Router } from "express";
 import { db } from "@workspace/db";
 import { consultations, insertConsultationSchema } from "@workspace/db";
 import { sendTelegramAlert } from "../lib/telegram";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, count } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 
 const JWT_SECRET = process.env["SESSION_SECRET"] ?? "nugunamoney-secret-2025";
@@ -24,12 +24,25 @@ router.post("/", async (req, res) => {
   }
 
   try {
+    const existing = await db.select({ id: consultations.id })
+      .from(consultations)
+      .where(eq(consultations.phone, parsed.data.phone))
+      .limit(1);
+    if (existing.length > 0) {
+      res.status(409).json({ error: "이미 신청된 전화번호입니다. 상담사가 곧 연락드립니다." });
+      return;
+    }
+
     const [row] = await db.insert(consultations).values(parsed.data).returning();
     await sendTelegramAlert(row).catch((err) => {
       req.log.error({ err }, "Telegram alert failed");
     });
     res.status(201).json({ ok: true, id: row.id });
-  } catch (err) {
+  } catch (err: any) {
+    if (err?.code === "23505") {
+      res.status(409).json({ error: "이미 신청된 전화번호입니다. 상담사가 곧 연락드립니다." });
+      return;
+    }
     req.log.error({ err }, "Failed to insert consultation");
     res.status(500).json({ error: "서버 오류가 발생했습니다." });
   }

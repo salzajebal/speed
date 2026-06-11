@@ -1,4 +1,4 @@
-import { pgTable, serial, text, timestamp } from "drizzle-orm/pg-core";
+import { pgTable, serial, text, timestamp, uniqueIndex } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
@@ -10,7 +10,9 @@ export const consultations = pgTable("consultations", {
   incomeType: text("income_type"),
   amount: text("amount"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
-});
+}, (t) => [
+  uniqueIndex("consultations_phone_unique").on(t.phone),
+]);
 
 export const insertConsultationSchema = createInsertSchema(consultations).omit({
   id: true,
