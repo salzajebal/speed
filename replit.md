@@ -45,7 +45,7 @@
 
 - Design matches https://today-loan.net structure but more premium
 - Admin password: admin123
-- Company: 우주캐피탈대부, 사업자번호: 738-95-01643, 대표: 강윤희·정충헌
+- Company: 우주캐피탈대부, 사업자번호: 738-95-01643, 대표: 강윤희
 - 주소: 충청북도 청주시 청원구 내덕동 788-115
 - 대부업번호: 2023-충북청주-0011, 전화: 010-5807-7888
 
