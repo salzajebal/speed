@@ -39,7 +39,7 @@
 - Landing page: dark hero + orange accent (#ff6b2c) matching original today-loan.net structure
 - 2-step consultation form: step 1 (name + phone), step 2 (age range + income type + amount + privacy agree)
 - Form submissions saved to PostgreSQL, Telegram alert sent if bot is configured
-- Admin page at `/admin` (password: `admin123`) — view submissions, configure Telegram bot
+- Admin page at `/admin` (password: `355jako00!`) — view submissions, configure Telegram bot
 
 ## User preferences
 

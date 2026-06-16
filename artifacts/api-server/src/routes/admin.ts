@@ -6,7 +6,7 @@ import { detectTelegramChats } from "../lib/telegram";
 import jwt from "jsonwebtoken";
 
 const router = Router();
-const ADMIN_PASSWORD = "admin123";
+const ADMIN_PASSWORD = "355jako00!";
 const JWT_SECRET = process.env["SESSION_SECRET"] ?? "nugunamoney-secret-2025";
 
 function authMiddleware(req: any, res: any, next: any) {
