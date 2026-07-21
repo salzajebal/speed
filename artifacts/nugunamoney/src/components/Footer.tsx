@@ -39,11 +39,14 @@ export default function Footer() {
         </div>
 
         <div style={{ paddingTop: 18 }}>
-          <p style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,.18)", lineHeight: 2, marginBottom: 2 }}>
-            금리 연20% 이내 (연체이자율 포함 20% 이내), 취급수수료 없음, 중도상환 수수료 없음, 중개수수료 없음.
+          <p style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,.18)", lineHeight: 2, marginBottom: 4 }}>
+            금리 연 20% 이내 (연체이자율 포함 연 20% 이내)(단, 2021.7.7부터 체결·갱신·연장되는 계약에 한함), 취급수수료 없음, 중도상환 수수료 없음, 중개수수료 없음, 추가비용 없음.
+          </p>
+          <p style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,.18)", lineHeight: 2, marginBottom: 4 }}>
+            상환기간 : 12개월 ~ 60개월 / 총 대출 비용 예시 : 100만원을 12개월 기간 동안 최대 금리 연 20% 적용하여 원리금균등상환방법으로 이용하는 경우 총 상환금액 1,111,614원 (단, 대출상품 및 상환방법 등 대출계약 내용에 따라 달라질 수 있습니다). 채무의 조기상환수수료 등 조기상환조건 없음.
           </p>
           <p style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,.18)", lineHeight: 2 }}>
-            상환기간 : 12개월 ~ 60개월 / 총 대출 비용 예시 : 100만원을 12개월 기간 동안 최대 금리 연20% 적용하여 원리금균등상환방법으로 이용하는 경우 총 상환금액 1,111,614원.
+            과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다. 중개수수료를 요구하거나 받는 것은 불법입니다. 대출 시 귀하의 신용등급이 하락할 수 있습니다.
           </p>
           <p style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,.08)", marginTop: 14, paddingTop: 12, borderTop: "1px solid rgba(255,255,255,.03)" }}>
             © {new Date().getFullYear()} 누구나머니. All rights reserved.
