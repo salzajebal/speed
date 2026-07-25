@@ -166,7 +166,7 @@ export default function Admin() {
       <div className="min-h-screen bg-[#0f0f0f] flex items-center justify-center" style={{ fontFamily: "'SUIT Variable','SUIT',sans-serif" }}>
         <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-10 w-full max-w-sm shadow-2xl">
           <div className="text-center mb-8">
-            <div className="text-[#ff6b2c] text-3xl font-black tracking-tight mb-1">누구나머니</div>
+            <div className="text-[#ff6b2c] text-3xl font-black tracking-tight mb-1">신속대출론</div>
             <div className="text-white/40 text-sm">관리자 로그인</div>
           </div>
           <form onSubmit={login} className="flex flex-col gap-4">
@@ -219,7 +219,7 @@ export default function Admin() {
       <header className="sticky top-0 z-40 bg-[#111] border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
           <span className="text-white font-black text-lg">
-            <span className="text-[#ff6b2c]">누구나머니</span> 관리자
+            <span className="text-[#ff6b2c]">신속대출론</span> 관리자
           </span>
           <div className="flex items-center gap-4">
             <button

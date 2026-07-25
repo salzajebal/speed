@@ -17,7 +17,7 @@ export default function Header() {
         alignItems: "center",
       }}>
         <div style={{ fontSize: 24, fontWeight: 700, color: "#111", letterSpacing: "-0.8px" }}>
-          누구나<span style={{ color: "#ff6b2c" }}>머니</span>
+          신속대출<span style={{ color: "#ff6b2c" }}>론</span>
         </div>
         <nav style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <span className="header-badge" style={{ fontSize: 13, fontWeight: 500, color: "#999", display: "flex", alignItems: "center", gap: 5 }}>

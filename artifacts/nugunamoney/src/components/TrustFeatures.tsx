@@ -36,7 +36,7 @@ export default function TrustFeatures() {
           variants={fadeIn}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why 누구나머니?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why 신속대출론?</h2>
           <p className="text-lg text-muted-foreground">믿을 수 있는 든든한 금융 파트너가 되어드리겠습니다.</p>
         </motion.div>
 

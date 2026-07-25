@@ -11,14 +11,14 @@ export default function Footer() {
         }} className="footer-top">
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#fff", letterSpacing: "-0.8px" }}>
-              누구나<span style={{ color: "#ff6b2c" }}>머니</span>
+              신속대출<span style={{ color: "#ff6b2c" }}>론</span>
             </div>
             <div style={{ fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,.22)", lineHeight: 2 }}>
-              <p>회사명 : 우주캐피탈대부 / 대표자 : 강윤희</p>
-              <p>사업자번호 : 738-95-01643</p>
-              <p>대부중개업등록번호 : 2023-충북청주-0011 (대부중개업)</p>
-              <p>주소 : 충청북도 청주시 청원구 내덕동 788-115</p>
-              <p>전화번호 : 010-5807-7888</p>
+              <p>회사명 : 유앤에스 파이낸셜대부중개 / 대표자 : 정의선</p>
+              <p>사업자번호 : 648-20-02701</p>
+              <p>대부중개업등록번호 : 2026-부산기장-0003</p>
+              <p>주소 : 부산광역시 기장군 일광읍 해송2로 10, 일광역 유림노르웨이아침 306호</p>
+              <p>전화번호 : 010-2451-3130</p>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start" }}>
@@ -49,7 +49,7 @@ export default function Footer() {
             과도한 빚은 당신에게 큰 불행을 안겨줄 수 있습니다. 중개수수료를 요구하거나 받는 것은 불법입니다. 대출 시 귀하의 신용등급이 하락할 수 있습니다.
           </p>
           <p style={{ fontSize: 11, fontWeight: 500, color: "rgba(255,255,255,.08)", marginTop: 14, paddingTop: 12, borderTop: "1px solid rgba(255,255,255,.03)" }}>
-            © {new Date().getFullYear()} 누구나머니. All rights reserved.
+            © {new Date().getFullYear()} 신속대출론. All rights reserved.
           </p>
         </div>
       </div>
