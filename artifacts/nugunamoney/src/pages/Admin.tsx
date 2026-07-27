@@ -304,7 +304,7 @@ export default function Admin() {
                             <td className="px-4 py-3.5">
                               <button
                                 onClick={() => setConfirmDeleteId(c.id)}
-                                className="text-white/20 hover:text-red-400 transition-colors text-xs font-semibold px-2 py-1 rounded hover:bg-red-500/10"
+                                className="text-red-400 hover:text-white hover:bg-red-500 transition-colors text-xs font-semibold px-3 py-1.5 rounded-md border border-red-500/30 hover:border-red-500"
                                 title="삭제"
                               >
                                 삭제
