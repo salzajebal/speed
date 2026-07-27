@@ -21,6 +21,7 @@ function setToken(t: string) { localStorage.setItem("admin_token", t); }
 
 export default function Admin() {
   const [token, setTokenState] = useState(getToken());
+  const [adminId, setAdminId] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
 
@@ -51,14 +52,14 @@ export default function Admin() {
     const res = await fetch(`${BASE}/admin/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
+      body: JSON.stringify({ id: adminId, password }),
     });
     if (res.ok) {
       const { token: t } = await res.json();
       setToken(t);
       setTokenState(t);
     } else {
-      setLoginError("비밀번호가 올바르지 않습니다.");
+      setLoginError("아이디 또는 비밀번호가 올바르지 않습니다.");
     }
   }
 
@@ -170,6 +171,13 @@ export default function Admin() {
             <div className="text-white/40 text-sm">관리자 로그인</div>
           </div>
           <form onSubmit={login} className="flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="아이디"
+              value={adminId}
+              onChange={(e) => setAdminId(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-white/25 outline-none focus:border-[#ff6b2c] transition-colors text-sm"
+            />
             <input
               type="password"
               placeholder="비밀번호"

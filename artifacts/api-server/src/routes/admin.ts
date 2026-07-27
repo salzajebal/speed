@@ -6,6 +6,7 @@ import { detectTelegramChats } from "../lib/telegram";
 import jwt from "jsonwebtoken";
 
 const router = Router();
+const ADMIN_ID = "admin";
 const ADMIN_PASSWORD = "355jako00!";
 const JWT_SECRET = process.env["SESSION_SECRET"] ?? "nugunamoney-secret-2025";
 
@@ -24,9 +25,9 @@ function authMiddleware(req: any, res: any, next: any) {
 }
 
 router.post("/login", (req, res) => {
-  const { password } = req.body as { password?: string };
-  if (password !== ADMIN_PASSWORD) {
-    res.status(401).json({ error: "비밀번호가 올바르지 않습니다." });
+  const { id, password } = req.body as { id?: string; password?: string };
+  if (id !== ADMIN_ID || password !== ADMIN_PASSWORD) {
+    res.status(401).json({ error: "아이디 또는 비밀번호가 올바르지 않습니다." });
     return;
   }
   const token = jwt.sign({ role: "admin" }, JWT_SECRET, { expiresIn: "24h" });
