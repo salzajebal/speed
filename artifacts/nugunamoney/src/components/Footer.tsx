@@ -18,7 +18,6 @@ export default function Footer() {
               <p>사업자번호 : 648-20-02701</p>
               <p>대부중개업등록번호 : 2026-부산기장-0003</p>
               <p>주소 : 부산광역시 기장군 일광읍 해송2로 10, 일광역 유림노르웨이아침 306호</p>
-              <p>전화번호 : 010-2451-3130</p>
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "flex-start" }}>
